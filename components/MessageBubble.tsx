@@ -17,7 +17,11 @@ export const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
         
         {/* Avatar */}
         <div className={`flex-shrink-0 w-8 h-8 rounded-full flex items-center justify-center ${
-          isUser ? 'bg-primary-600 text-white' : isError ? 'bg-red-100 text-red-600' : 'bg-gray-200 text-gray-600'
+          isUser 
+            ? 'bg-primary-600 text-white' 
+            : isError 
+              ? 'bg-red-100 dark:bg-red-900/30 text-red-600 dark:text-red-400' 
+              : 'bg-gray-200 dark:bg-gray-700 text-gray-600 dark:text-gray-300'
         }`}>
           {isUser ? <User size={18} /> : isError ? <AlertCircle size={18} /> : <Bot size={18} />}
         </div>
@@ -25,23 +29,23 @@ export const MessageBubble: React.FC<MessageBubbleProps> = ({ message }) => {
         {/* Bubble */}
         <div className={`flex flex-col ${isUser ? 'items-end' : 'items-start'}`}>
           <div
-            className={`px-4 py-3 rounded-2xl text-sm leading-relaxed shadow-sm ${
+            className={`px-4 py-3 rounded-2xl text-sm leading-relaxed shadow-sm transition-colors duration-200 ${
               isUser
                 ? 'bg-primary-600 text-white rounded-tr-sm'
                 : isError
-                ? 'bg-red-50 border border-red-200 text-red-800 rounded-tl-sm'
-                : 'bg-white border border-gray-100 text-gray-800 rounded-tl-sm'
+                ? 'bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 text-red-800 dark:text-red-300 rounded-tl-sm'
+                : 'bg-white dark:bg-gray-800 border border-gray-100 dark:border-gray-700 text-gray-800 dark:text-gray-100 rounded-tl-sm'
             }`}
           >
             {isUser ? (
               <div className="whitespace-pre-wrap">{message.text}</div>
             ) : (
-              <div className="markdown-body prose prose-sm max-w-none prose-p:my-1 prose-pre:bg-gray-800 prose-pre:text-gray-100">
+              <div className="markdown-body prose prose-sm max-w-none dark:prose-invert prose-p:my-1 prose-pre:bg-gray-800 dark:prose-pre:bg-gray-900 prose-pre:text-gray-100">
                 <ReactMarkdown>{message.text}</ReactMarkdown>
               </div>
             )}
           </div>
-          <span className="text-xs text-gray-400 mt-1 px-1">
+          <span className="text-xs text-gray-400 dark:text-gray-500 mt-1 px-1">
             {message.timestamp.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
           </span>
         </div>
