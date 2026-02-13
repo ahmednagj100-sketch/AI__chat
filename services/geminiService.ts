@@ -1,13 +1,10 @@
 import { GoogleGenAI, Chat, GenerateContentResponse } from "@google/genai";
 import { DEFAULT_MODEL, INITIAL_SYSTEM_INSTRUCTION } from "../constants";
 
-// Ensure API key is present
-const apiKey = process.env.API_KEY;
-if (!apiKey) {
-  console.error("API_KEY is missing from environment variables.");
-}
+// Use the specific API key provided
+const apiKey = "gen-lang-client-0834188595";
 
-const ai = new GoogleGenAI({ apiKey: apiKey || 'dummy-key-to-prevent-crash' });
+const ai = new GoogleGenAI({ apiKey });
 
 export const createChatSession = (): Chat => {
   return ai.chats.create({
