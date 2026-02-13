@@ -12,6 +12,13 @@ export interface ChatState {
   error: string | null;
 }
 
+export interface DebugLog {
+  id: string;
+  timestamp: Date;
+  type: 'info' | 'error' | 'debug' | 'success';
+  message: string;
+}
+
 export enum GeminiModel {
   FLASH = 'gemini-3-flash-preview',
   PRO = 'gemini-3-pro-preview',
