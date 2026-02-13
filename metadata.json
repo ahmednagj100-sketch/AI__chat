@@ -1,0 +1,5 @@
+{
+  "name": "Gemini Flux Chat",
+  "description": "A high-performance, aesthetic AI chat interface powered by Google's Gemini 3 Flash model, featuring real-time streaming and Markdown support.",
+  "requestFramePermissions": []
+}
